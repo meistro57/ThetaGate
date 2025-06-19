@@ -11,7 +11,15 @@ def run(args: argparse.Namespace) -> None:
         try:
             for sample in eeg.stream(interval=args.interval):
                 tscore = trance.score(sample)
-                print(f"Sample {sample} :: Trance score {tscore:.2f}")
+                ratio = trance.alpha_theta_ratio(sample)
+                crossover = trance.alpha_theta_crossover(sample)
+                msg = (
+                    f"Sample {sample} :: Trance score {tscore:.2f} :: "
+                    f"theta/alpha {ratio:.2f}"
+                )
+                if crossover and not args.no_crossover_alert:
+                    msg += " << alpha-theta crossover"
+                print(msg)
         except KeyboardInterrupt:
             print("\nStopping stream.")
     elif args.command == "run-script":
@@ -39,6 +47,11 @@ def parse_args(argv=None) -> argparse.Namespace:
 
     mon = sub.add_parser("monitor", help="Stream simulated EEG")
     mon.add_argument("--interval", type=float, default=1.0, help="Sample interval")
+    mon.add_argument(
+        "--no-crossover-alert",
+        action="store_true",
+        help="Suppress alpha-theta crossover messages",
+    )
 
     sc = sub.add_parser("run-script", help="Run hypnosis script")
     sc.add_argument("file", help="Path to script file")
