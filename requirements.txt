@@ -1,2 +1,4 @@
 elevenlabs>=2.3.0
 flask>=2.3
+dash>=2.16
+playsound==1.2.2
