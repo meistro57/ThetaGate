@@ -53,3 +53,12 @@ Launch a simple browser interface to view EEG samples and run scripts:
 python -m thetagate web
 ```
 
+## Dash Hypnosis Session
+
+Run a guided hypnosis session with real-time EEG visualization and automatic
+logging:
+
+```bash
+python -m thetagate.hypnosis_dash
+```
+
