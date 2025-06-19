@@ -8,6 +8,7 @@ EEG-powered hypnosis assistant for self-exploration and QHHT. Tracks trance dept
 - Live brainwave visualization (Delta, Theta, Alpha, Beta)
 - Custom hypnosis script playback with binaural support
 - Real-time trance depth detection with scoring system
+- Alpha-theta ratio and crossover alerts
 - EEG data logging + session replay
 - QHHT practitioner dashboard (in development)
 
@@ -34,7 +35,7 @@ A simple CLI is included to demonstrate the basic functionality.
 Install dependencies with `pip install -r requirements.txt`.
 
 ```bash
-# Stream simulated EEG data
+# Stream simulated EEG data with crossover alerts
 python -m thetagate monitor --interval 1
 
 # Run a sample hypnosis script
