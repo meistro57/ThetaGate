@@ -5,6 +5,12 @@ from pathlib import Path
 from . import eeg, trance, script_runner, speech
 
 
+def _start_web(host: str, port: int) -> None:
+    from . import web
+
+    web.app.run(host=host, port=port)
+
+
 def run(args: argparse.Namespace) -> None:
     if args.command == "monitor":
         print("Streaming simulated EEG data. Press Ctrl+C to stop.")
@@ -37,6 +43,8 @@ def run(args: argparse.Namespace) -> None:
                 api_key=args.api_key,
             )
         script_runner.run_script(lines, delay=args.delay, speech_settings=settings)
+    elif args.command == "web":
+        _start_web(args.host, args.port)
     else:
         print("Unknown command")
 
@@ -75,6 +83,9 @@ def parse_args(argv=None) -> argparse.Namespace:
         "--api-key",
         help="ElevenLabs API key (defaults to ELEVENLABS_API_KEY env variable)",
     )
+    web_cmd = sub.add_parser("web", help="Start web interface")
+    web_cmd.add_argument("--host", default="127.0.0.1", help="Host to bind")
+    web_cmd.add_argument("--port", type=int, default=5000, help="Port to bind")
 
 
     return parser.parse_args(argv)
