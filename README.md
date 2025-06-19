@@ -30,8 +30,8 @@ EEG-powered hypnosis assistant for self-exploration and QHHT. Tracks trance dept
 
 ## Getting Started
 
-A simple CLI is included to demonstrate the basic functionality. No external
-packages are required beyond Python 3.8+.
+A simple CLI is included to demonstrate the basic functionality.
+Install dependencies with `pip install -r requirements.txt`.
 
 ```bash
 # Stream simulated EEG data
@@ -39,5 +39,8 @@ python -m thetagate monitor --interval 1
 
 # Run a sample hypnosis script
 python -m thetagate run-script scripts/sample.txt --delay 3
+
+# Run the script with speech synthesis (requires ELEVENLABS_API_KEY)
+python -m thetagate run-script scripts/sample.txt --voice-id "YOUR_VOICE_ID"
 ```
 
