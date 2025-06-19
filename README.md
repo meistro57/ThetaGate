@@ -45,3 +45,11 @@ python -m thetagate run-script scripts/sample.txt --delay 3
 python -m thetagate run-script scripts/sample.txt --voice-id "YOUR_VOICE_ID"
 ```
 
+## Web UI
+
+Launch a simple browser interface to view EEG samples and run scripts:
+
+```bash
+python -m thetagate web
+```
+
