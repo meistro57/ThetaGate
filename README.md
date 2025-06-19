@@ -27,3 +27,17 @@ EEG-powered hypnosis assistant for self-exploration and QHHT. Tracks trance dept
 - [ ] Session recording and tagging
 - [ ] QHHT mode for guided sessions
 
+
+## Getting Started
+
+A simple CLI is included to demonstrate the basic functionality. No external
+packages are required beyond Python 3.8+.
+
+```bash
+# Stream simulated EEG data
+python -m thetagate monitor --interval 1
+
+# Run a sample hypnosis script
+python -m thetagate run-script scripts/sample.txt --delay 3
+```
+
